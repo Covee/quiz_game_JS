@@ -14,8 +14,31 @@ CODING CHALLENGE
 7. Suppose this code would be a plugin for other programmers to use in their code. So make sure that all your code is private and doesn't interfere with the other programmers code (Hint: we learned a special technique to do exactly that).
 */
 
+function Questions(question, choices, correct) {
+    this.questions = question;
+    this.choices = choices;
+    this.correct = correct;
+}
 
+const Q1 = new Questions(
+    "코비는 잘생김 진짜임. 동의?",
+    ["ㅇㅈ", "ㄴㅇㅈ"],
+    0
+);
 
+const Q2 = new Questions(
+    "react는 좋은 언어다",
+    ["yes", "no", "그때 그때 다름"],
+    2
+);
+
+const Q3 = new Questions(
+    "세상에서 제일 팍팍한 것은?",
+    ["물가", "집값", "대통령", "이세상"],
+    3
+);
+
+var questions = [Q1, Q2, Q3];
 
 
 
