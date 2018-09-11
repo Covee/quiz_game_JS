@@ -68,12 +68,21 @@ function RP() {
         console.log('your score: ' + currentStatus);
         console.log('-----------------------');
     }
-
+    
     var questions = [Q1, Q2, Q3];
-    var pick_q = Math.floor(Math.random()*questions.length);
-    questions[pick_q].pickerQ();
-    var answer = parseInt(prompt("what is the right answer?"));
-    questions[pick_q].correction(answer)
+
+    function nextQuestion() {       // step 8,9. using recursive function including exit condition.
+        var pick_q = Math.floor(Math.random()*questions.length);
+        questions[pick_q].pickerQ();
+        var answer = prompt("what is the right answer?");
+
+        if (answer !== 'exit') {
+            questions[pick_q].correction(parseInt(answer));
+            nextQuestion();
+        }
+    };
+
+    nextQuestion();
 
 };
 RP();
