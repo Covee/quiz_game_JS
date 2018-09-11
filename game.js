@@ -41,7 +41,7 @@ function RP() {
         3
     );
 
-    Questions.prototype.pickerQ = function() {
+    Questions.prototype.pickerQ = function() {      // display a random question on console
         console.log(this.question);
 
         for (var i = 0; i < this.choices.length; i++) {
@@ -51,7 +51,7 @@ function RP() {
 
     var currentStatus = 0;
 
-    Questions.prototype.correction = function (answer) {
+    Questions.prototype.correction = function (answer) {    // check if it is correct answer + add score
         var currentScore = currentStatus;
         if (answer == this.correct) {
             console.log("you got right answer!");
@@ -64,7 +64,7 @@ function RP() {
         currentStatus = currentScore;
     }
 
-    Questions.prototype.displayScore = function (currentStatus) {
+    Questions.prototype.displayScore = function (currentStatus) {   // display current score I got
         console.log('your score: ' + currentStatus);
         console.log('-----------------------');
     }
@@ -86,15 +86,5 @@ function RP() {
 
 };
 RP();
-
-
-
-
-
-
-
-
-
-
 
 
