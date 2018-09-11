@@ -13,37 +13,69 @@ CODING CHALLENGE
 6. Check if the answer is correct and print to the console whether the answer is correct ot nor (Hint: write another method for this).
 7. Suppose this code would be a plugin for other programmers to use in their code. So make sure that all your code is private and doesn't interfere with the other programmers code (Hint: we learned a special technique to do exactly that).
 */
+function RP() {
+    function Questions(id, question, choices, correct) {
+        this.id = id;
+        this.question = question;
+        this.choices = choices;
+        this.correct = correct;
+    }
 
-function Questions(question, choices, correct) {
-    this.questions = question;
-    this.choices = choices;
-    this.correct = correct;
-}
+    var Q1 = new Questions(
+        0,
+        "is cobee looking good?",
+        ["yep", "never"],
+        0
+    );
+    var Q2 = new Questions(
+        1,
+        "is react good enough as library?",
+        ["yes", "no", "it depends"],
+        2
+    );
+    var Q3 = new Questions(
+        2,
+        "the most fuckest thing in korea?",
+        ["price", "Housing", "President SalerMoon", "whole world"],
+        3
+    );
 
-const Q1 = new Questions(
-    "코비는 잘생김 진짜임. 동의?",
-    ["ㅇㅈ", "ㄴㅇㅈ"],
-    0
-);
+    Questions.prototype.pickerQ = function() {
+        console.log(this.question);
 
-const Q2 = new Questions(
-    "react는 좋은 언어다",
-    ["yes", "no", "그때 그때 다름"],
-    2
-);
+        for (var i = 0; i < this.choices.length; i++) {
+            console.log("(" + i + ") " + this.choices[i]);    
+        }
+    }
 
-const Q3 = new Questions(
-    "세상에서 제일 팍팍한 것은?",
-    ["물가", "집값", "대통령", "이세상"],
-    3
-);
+    var currentStatus = 0;
 
-var questions = [Q1, Q2, Q3];
+    Questions.prototype.correction = function (answer) {
+        var currentScore = currentStatus;
+        if (answer == this.correct) {
+            console.log("you got right answer!");
+            currentScore++;
+        } else {
+            console.log("fuckin idiot. ");
+        }
 
+        this.displayScore(currentScore);
+        currentStatus = currentScore;
+    }
 
+    Questions.prototype.displayScore = function (currentStatus) {
+        console.log('your score: ' + currentStatus);
+        console.log('-----------------------');
+    }
 
+    var questions = [Q1, Q2, Q3];
+    var pick_q = Math.floor(Math.random()*questions.length);
+    questions[pick_q].pickerQ();
+    var answer = parseInt(prompt("what is the right answer?"));
+    questions[pick_q].correction(answer)
 
-
+};
+RP();
 
 
 
